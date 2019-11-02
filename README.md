@@ -1,3 +1,11 @@
+# My one-page resume
+
+This is my personal one-page resume. Kudos to `deedy` for providing such a nice template.
+
+
+
+Original README.md:
+
 Deedy-Resume
 =========================
 
