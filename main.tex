@@ -1,0 +1,231 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deedy - One Page Two Column Resume
+% LaTeX Template
+% Version 1.1 (30/4/2014)
+%
+% Original author:
+% Debarghya Das (http://debarghyadas.com)
+%
+% Original repository:
+% https://github.com/deedydas/Deedy-Resume
+%
+% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+% This template uses several fonts not included with Windows/Linux by
+% default. If you get compilation errors saying a font is missing, find the line
+% on which the font is used and either change it to a font included with your
+% operating system or comment the line out to use the default font.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% TODO:
+% 1. Integrate biber/bibtex for article citation under publications.
+% 2. Figure out a smoother way for the document to flow onto the next page.
+% 3. Add styling information for a "Projects/Hacks" section.
+% 4. Add location/address information
+% 5. Merge OpenFont and MacFonts as a single sty with options.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CHANGELOG:
+% v1.1:
+% 1. Fixed several compilation bugs with \renewcommand
+% 2. Got Open-source fonts (Windows/Linux support)
+% 3. Added Last Updated
+% 4. Move Title styling into .sty
+% 5. Commented .sty file.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Known Issues:
+% 1. Overflows onto second page if any column's contents are more than the
+% vertical limit
+% 2. Hacky space on the first bullet point on the second column.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Mac-only
+% \documentclass[a4paper]{deedy-resume}
+% \newcommand*{\custombold}[1]{\textbf{#1}}
+
+\documentclass[a4paper]{deedy-resume-openfont}
+
+\usepackage[inline]{enumitem}
+
+\newfontfamily{\FA}[Path = fonts/]{fontawesome-webfont}
+
+\def\github{\color{gray}{\FA\symbol{"F092}}}
+\def\facebook{\color{gray}{\FA\symbol{"F082}}}
+\def\linkedin{\color{gray}{\FA\symbol{"F08C}}}
+\def\phoneb{\color{gray}{\FA\symbol{"F098}}}
+\def\home{\color{gray}{\FA\symbol{"F015}}}
+\def\mail{\color{gray}{\FA\symbol{"F0E0}}}
+\def\globe{\color{gray}{\FA\symbol{"F0AC}}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbullet}
+\makeatother
+\usepackage{microtype}
+\usepackage[numbers]{natbib}
+\bibliographystyle{unsrtnat}
+\renewcommand{\bibsection}{}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\begin{document}
+
+% \lastupdated
+
+\namesection{Luca}{Di Stefano}{
+%Gran Sasso Science Institute • Via Michele Iacobucci, 2 • 67100 L'Aquila, Italy\\
+\begin{itemize*}[itemjoin = \hspace{1em}]
+    \item[\mail] \href{mailto:luca.distefano@gssi.it}{luca.distefano@gssi.it} 
+    \item[\phoneb] ...
+    \item[\globe] \urlstyle{same}\href{http://lou1306.github.io}{lou1306.github.io}
+    \item[\linkedin] \href{https://www.linkedin.com/in/lou1306}{linkedin.com/in/lou1306}
+\end{itemize*}
+}
+
+\begin{minipage}[t]{0.3\textwidth} 
+
+\section{WORK EXPERIENCE} 
+
+\runsubsection{Thales Alenia Space}
+\descript{Workshop Planning Intern}
+\location{June 2015 – Feb 2016 • L'Aquila, IT}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+Maintenance of legacy traceability systems; development of in-house client applications (SQL Server, VBA).
+\sectionsep
+
+\runsubsection{Aubay Research \& Technologies}
+\descript{Intern}
+\location{Dec 2013 – Feb 2014\ • Carsoli, IT}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+Bachelor's thesis project.
+Design of a digital publishing platform with a cross-platform mobile client (C\#, ASP.NET, Windows Communication Foundation, Java, Xamarin).
+\sectionsep
+
+\section{VOLUNTEERING}
+
+\subsection{Associazione Italiana Guide e Scouts d'Europa Cattolici}
+\location{January 2015 – Present time}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+Development and deployment of web applications
+(C\#, ASP.Net, SQL Server, PHP, JavaScript, Azure).
+\sectionsep
+
+\section{PROGRAMMING}
+\location{Proficient:}
+Python • C\# • F\# • Java • \LaTeX\ \\
+\location{Competent:}
+C • C++ • Javascript • T-SQL\\ Matlab • Bash • Erlang \\
+\location{Familiar:}
+OCaml • PHP • Prolog • VHDL
+\sectionsep
+
+\section{CERTIFICATIONS} 
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item[2015]    Cisco CCNA Routing and Switching: Introduction to Networks\\
+\item[2010]    Cambridge First Certificate in English (FCE). Pass with merit\\
+\end{tightemize}
+\sectionsep
+
+\end{minipage} 
+\hfill
+\begin{minipage}[t]{0.67\textwidth} 
+
+\section[Publications]{PUBLICATIONS \small{(DBLP: \href{https://dblp.org/pid/215/9758}{\custombold{215/9758}}, Orcid: \href{https://orcid.org/0000-0003-1922-3151}{\custombold{0000-0003-1922-3151}})}}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+
+\nocite{*}
+\bibliography{publications}
+
+% \begin{tightemize}
+%     \item R. De Nicola, L. Di Stefano, and O. Inverso, ``Multi-Agent Systems with Virtual Stigmergy,'' to appear in Science of Computer Programming.
+%     \item R. De Nicola, L. Di Stefano, and O. Inverso, ``Toward Formal Models and Languages for Verifiable Multi-Robot Systems,'' Front. Robot. AI, vol. 5, 2018.
+%     \item R. De Nicola, L. Di Stefano, and O. Inverso, ``Multi-Agent Systems with Virtual Stigmergy,'' in STAF 2018 Collocated Workshops, Revised Selected Papers,
+%     Toulouse, France, 2018, pp. 351-366. 
+%     \item L. Di Stefano, E. Clementini, and E. Stagnini, ``Reactive Obstacle Avoidance for Multicopter UAVs via Evaluation of Depth Maps,'' in COSIT 2017 Workshops and Posters, L’Aquila, Italy, 2017, pp. 41–43.
+% \end{tightemize}
+
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{EDUCATION}
+
+\runsubsection{INRIA}
+\descript{Visiting PhD student}
+\location{March – July 2019 • Grenoble, FR}
+\begin{tightemize}
+    \item Encoding of multi-agent systems in the LNT specification language
+    \item Verification of multi-agent systems through model checking (\href{https://cadp.inria.fr/}{\custombold{CADP}})
+\end{tightemize}
+\sectionsep
+
+\subsection{1st VMCAI Winter School}
+\location{January 2019 • Lisbon, PT}
+\begin{tightemize}
+    \item Computing with SAT oracles
+    \item Abstract interpretation
+    \item Modeling and verification of distributed protocols
+\end{tightemize}
+\sectionsep
+
+\runsubsection{Gran Sasso Science Institute}
+\descript{PhD in Computer Science}
+\location{October 2016 – Present time • L'Aquila, IT}
+\begin{tightemize}
+\item Languages and process algebras for the specification and verification of reactive systems
+\item Semantics of programming languages
+\item Model checking and software verification
+\end{tightemize}
+Other activities: student representative in the academic senate
+\sectionsep
+
+\subsection{University of L'Aquila}
+\descript{MS in Computer Science and Systems Engineering, cum laude}
+\location{Oct 2016 • L'Aquila, IT}
+\begin{tightemize}
+\item Control Theory
+\item Communication networks
+\item Spatial information theory
+\item Embedded systems
+\end{tightemize}
+\descript{BS in Computer Science and Systems Engineering}
+\location{Mar 2014 • L'Aquila, IT}
+\sectionsep
+
+\section{SOFTWARE PROJECTS}
+\location{\hspace{1em}}
+
+\begin{tightemize}
+\item
+A tool to verify multi-agent systems with stigmergic interaction.
+The tool transforms a multi-agent system specification into a sequential
+imperative program, which can be verified with any off-the-shelf tool for
+program analysis in the target language (Python, F\#).
+Code partially available on \href{https://github.com/labs-lang/sliver}{\custombold{GitHub}}.
+
+\item 
+An open-source toolchain to synthetize garbled circuits from Python specifications (Python 3, Yosys, TinyGarble). 
+Assignment for a Cryptography and Security course at GSSI.
+Code available on \href{https://github.com/lou1306/gssi/blob/master/2pc/}{\custombold{GitHub}}.
+\item
+A computer vision algorithm
+for goal-oriented obstacle avoidance (Python 3, OpenCV, V-REP). 
+Master's thesis project; presented as a poster at COSIT2017. 
+Code available on \href{https://github.com/lou1306/localpathplanner}{\custombold{GitHub}}.
+\end{tightemize}
+
+\end{minipage} 
+\end{document}
