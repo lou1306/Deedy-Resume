@@ -91,4 +91,7 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
 .vscode
+*.pdf
+!main.pdf
