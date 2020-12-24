@@ -20,8 +20,8 @@
 
 % Color definitions
 \definecolor{date}{HTML}{666666} 
-\definecolor{primary}{HTML}{2b2b2b} 
-\definecolor{headings}{HTML}{6A6A6A}
+\definecolor{primary}{HTML}{222222} 
+\definecolor{headings}{HTML}{646464}
 \definecolor{subheadings}{HTML}{333333}
 
 % Set main fonts
