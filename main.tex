@@ -80,6 +80,22 @@
     urlcolor=black
 }
 
+\input{commands.tex}
+\usepackage{ifthen}
+
+\newcommand{\ifShort}[1]{#1}
+\newcommand{\ifLong}[1]{}
+
+\newcommand{\comboJob}[5]{%\combosection{#1}{#2}{#4 • #3}{#5}\vspace{\topsep}
+\runsubsection{#1}
+\descript{#2}
+\location{#3 • #4}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+#5
+\sectionsep%
+}
+
+
 \begin{document}
 
 % \lastupdated
@@ -155,75 +171,76 @@ OCaml • PHP • Prolog • VHDL
 \begin{minipage}[t]{0.67\textwidth} 
 
 \section{CAREER}
+\input{long/data/jobs.tex}
 
-\runsubsection{INRIA}
-\descript{Postdoctoral Researcher • CONVECS}
-\location{Nov 2020 – Present time • Grenoble, FR}
-% \begin{tightemize}
-%     \item Encoding of multi-agent systems in the LNT specification language
-%     \item Verification of multi-agent systems through model checking (\href{https://cadp.inria.fr/}{\custombold{CADP}})
-% \end{tightemize}
-\sectionsep%
+% \runsubsection{INRIA}
+% \descript{Postdoctoral Researcher • CONVECS}
+% \location{Nov 2020 – Present time • Grenoble, FR}
+% % \begin{tightemize}
+% %     \item Encoding of multi-agent systems in the LNT specification language
+% %     \item Verification of multi-agent systems through model checking (\href{https://cadp.inria.fr/}{\custombold{CADP}})
+% % \end{tightemize}
+% \sectionsep%
 
-\runsubsection{IMT Lucca}
-\descript{Grant holder}
-\location{Dec 2019 – Oct 2020 • Lucca, IT}
-\vspace{\topsep} % Hacky fix for awkward extra vertical space
-    ``Verification of Emerging Properties in Collective Adaptive Systems''.
-\sectionsep%
+% \runsubsection{IMT Lucca}
+% \descript{Grant holder}
+% \location{Dec 2019 – Oct 2020 • Lucca, IT}
+% \vspace{\topsep} % Hacky fix for awkward extra vertical space
+%     ``Verification of Emerging Properties in Collective Adaptive Systems''.
+% \sectionsep%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     EXPERIENCE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{EDUCATION}
+\input{long/data/edu.tex}
 
+% \runsubsection{INRIA}
+% \descript{Visiting PhD student • CONVECS}
+% \location{Mar – Jul 2019 • Grenoble, FR}
+% % \begin{tightemize}
+% %     \item Encoding of multi-agent systems in the LNT specification language
+% %     \item Verification of multi-agent systems through model checking (\href{https://cadp.inria.fr/}{\custombold{CADP}})
+% % \end{tightemize}
+% \sectionsep%
 
-\runsubsection{INRIA}
-\descript{Visiting PhD student • CONVECS}
-\location{Mar – Jul 2019 • Grenoble, FR}
-% \begin{tightemize}
-%     \item Encoding of multi-agent systems in the LNT specification language
-%     \item Verification of multi-agent systems through model checking (\href{https://cadp.inria.fr/}{\custombold{CADP}})
-% \end{tightemize}
-\sectionsep%
+% \runsubsection{1st VMCAI Winter School}
+% \descript{Attendee}
+% \location{Jan 2019 • Lisbon, PT}
+% % \begin{tightemize}
+% %     \item Computing with SAT oracles
+% %     \item Abstract interpretation
+% %     \item Modeling and verification of distributed protocols
+% % \end{tightemize}
+% \sectionsep%
 
-\runsubsection{1st VMCAI Winter School}
-\descript{Attendee}
-\location{Jan 2019 • Lisbon, PT}
-% \begin{tightemize}
-%     \item Computing with SAT oracles
-%     \item Abstract interpretation
-%     \item Modeling and verification of distributed protocols
-% \end{tightemize}
-\sectionsep%
+% \subsection{Gran Sasso Science Institute}
+% \descript{PhD in Computer Science}
+% \location{Oct 2016 – Oct 2020 • L'Aquila, IT}
+% \vspace{\topsep} % Hacky fix for awkward extra vertical space
+% Thesis: ``Modelling and Verification of Multi-Agent Systems via Sequential Emulation'',
+% available at: \href{http://hdl.handle.net/20.500.12571/10181}{\custombold{hdl.handle.net/20.500.12571/10181}}.\\
+% % \begin{tightemize}
+% % \item Languages and process algebras for the specification and verification of reactive systems
+% % \item Semantics of programming languages
+% % \item Model checking and software verification
+% % \end{tightemize}
+% Other activities: student representative in the academic senate (2018--2020)
+% \sectionsep%
 
-\subsection{Gran Sasso Science Institute}
-\descript{PhD in Computer Science}
-\location{Oct 2016 – Oct 2020 • L'Aquila, IT}
-\vspace{\topsep} % Hacky fix for awkward extra vertical space
-Thesis: ``Modelling and Verification of Multi-Agent Systems via Sequential Emulation'',
-available at: \href{http://hdl.handle.net/20.500.12571/10181}{\custombold{hdl.handle.net/20.500.12571/10181}}.\\
-% \begin{tightemize}
-% \item Languages and process algebras for the specification and verification of reactive systems
-% \item Semantics of programming languages
-% \item Model checking and software verification
-% \end{tightemize}
-Other activities: student representative in the academic senate (2018--2020)
-\sectionsep%
-
-\subsection{University of L'Aquila}
-\descript{MS in Computer Science and Systems Engineering, cum laude}
-\location{Mar 2014 – Oct 2016 • L'Aquila, IT}
-% \begin{tightemize}
-% \item Control Theory
-% \item Communication networks
-% \item Spatial information theory
-% \item Embedded systems
-% \end{tightemize}
-\descript{BS in Computer Science and Systems Engineering}
-\location{Oct 2010 – Mar 2014 • L'Aquila, IT}
-\sectionsep%
+% \subsection{University of L'Aquila}
+% \descript{MS in Computer Science and Systems Engineering, cum laude}
+% \location{Mar 2014 – Oct 2016 • L'Aquila, IT}
+% % \begin{tightemize}
+% % \item Control Theory
+% % \item Communication networks
+% % \item Spatial information theory
+% % \item Embedded systems
+% % \end{tightemize}
+% \descript{BS in Computer Science and Systems Engineering}
+% \location{Oct 2010 – Mar 2014 • L'Aquila, IT}
+% \sectionsep%
 
 \section[Publications]{PUBLICATIONS \small{(DBLP\@: \href{https://dblp.org/pid/215/9758}{\custombold{215/9758}}; ORCID iD\@: \href{https://orcid.org/0000-0003-1922-3151}{\custombold{0000-0003-1922-3151}})}}
 \vspace{\topsep} % Hacky fix for awkward extra vertical space
