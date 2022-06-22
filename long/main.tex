@@ -1,8 +1,8 @@
 \documentclass[11pt,a4paper]{moderncv}
 \usepackage{microtype}
 % \usepackage{times}
-\usepackage[hscale=0.7,vscale=0.9]{geometry}
-\recomputelengths
+% \usepackage[top=5em, bottom=10em, hscale=0.63]{geometry}
+% \recomputelengths
 
 \usepackage[bottom]{footmisc}
 
@@ -19,7 +19,7 @@
 \defbibcheck{isjournal}{\ifentrytype{article}{}{\skipentry}}
 \defbibcheck{isconference}{\ifentrytype{inproceedings}{}{\skipentry}}
 \defbibheading{journals}{\subsection*{Journal articles}}
-\defbibheading{conferences}{\subsection*{Peer-reviewed conference papers}}
+\defbibheading{conferences}{\subsection*{Peer-reviewed conference and workshop papers}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{../commands.tex}
 
@@ -35,6 +35,9 @@
 
 \newcommand{\comboJob}[5]{%
 \cventry{#3}{#2}{#1}{#4}{}{#5}%
+}
+\newcommand{\comboJobZero}[5]{%
+\cventry[0pt]{#3}{#2}{#1}{#4}{}{#5}%
 }
 
 \newcommand*{\custombold}[1]{\textbf{#1}}
@@ -57,36 +60,45 @@
 
 \section*{Personal information}
 \begin{description}
-    \item[E-mail:] \href{mailto:luca.di-stefano@inria.fr}{luca.di-stefano@inria.fr} 
-    \item[Work address:] 655 avenue de l'Europe, 38334 Montbonnot, France
-    \item[Web page:] \href{https://convecs.inria.fr/people/Luca.Di-Stefano/}{convecs.inria.fr/people/Luca.Di-Stefano/} 
+    \item[E-mail:] \href{mailto:lucad@chalmers.se}{lucad@chalmers.se} 
+    \item[Work address:] Rännvägen 6B, 41258 Göteborg, Sweden
+    \item[Web page:] \url{https://www.cse.chalmers.se/~lucad/} 
 \end{description}
 
 \section{Research interests}
-My research mainly concerns the formal modelling and analysis of multi-agent and
-collective systems. This entails, on one hand, the development of formally
+My research mainly concerns the formal modelling and analysis of agent-based
+models of complex collective systems.
+On one hand, this entails the development of formally
 defined high-level languages to concisely describe the features of individual
-agents, and on the other hand the application of state-of-the-art
-verification techniques to check the collective behaviour of the system.
-%
+agents; on the other hand, it requires applying and improving state-of-the-art
+verification techniques to check the collective behaviour of the resulting system.
+
 Keywords associated with my interests include:
 
 \cvline{Modelling}{%
-Multi-agent systems, collective adaptive systems,
-Agent-based modelling, Stigmergic interaction,
-Process algebras, Structural operational semantics,
-Attribute-based communication, Domain-specific languages.
+Agent-based modelling,
+Attribute-based communication,
+Collective adaptive systems,
+Domain-specific languages,
+Multi-agent systems, 
+Process algebras, 
+Stigmergic interaction,
+Structural operational semantics,
+Temporal logics.
 }
 \cvline{Analysis}{%
+Bounded model checking,
 Explicit-state and symbolic model checking,
-Bounded model checking, Temporal logics, Software verification.
+Software verification,
+Static analysis.
 }
-
 
 \section*{Education}
 \input{data/edu.tex}
 
-\section*{Experience}
+\clearpage
+
+\section*{Positions held}
 \input{data/jobs.tex}
 
 \section*{Teaching}
@@ -96,17 +108,62 @@ Bounded model checking, Temporal logics, Software verification.
 
 \subsection{Reviewing activity}
 
-Invited as reviewer or sub-reviewer for the following conferences:
+I have reviewed submissions to the following conferences and journals:
 
+\vspace*{\itemsep}
 \cvlistitem{International Conference on Autonomous Agents and Multiagent Systems (AAMAS)}
 \cvlistitem{International Symposium on Formal Methods (FM)}
+\cvlistitem{International Conference on Formal Techniques for Distributed Objects, Components, and Systems (FORTE)}
 \cvlistitem{International Conference on Software Technologies (ICSOFT)}
 \cvlistitem{International Conference on Software Engineering and Formal Methods (SEFM)}
+\cvlistitem{Science of Computer Programming, Elsevier}
 \cvlistitem{Theoretical Aspects of Software Engineering Conference (TASE)}
 
 \subsection*{Participation to PhD schools}
 
 \input{data/schools.tex}
+
+\subsection*{Invited presentations}
+
+\cvlistitem{\emph{Verifying collective adaptive systems by emulation.}
+Remote presentation to the Formal Methods unit of the Computer Science and
+Engineering department  at Chalmers Institute.
+Gothenburg, Sweden, 10 March 2022.
+}
+
+\cvlistitem{\emph{Multi-agent (smart) systems with virtual stigmergies.}
+Kickoff meeting of Italian national research project (PRIN)
+\emph{IT MATTERS: Methods and Tools for Trustworthy Smart Systems.}
+Pisa, Italy, 14 October 2019.
+}
+\cvlistitem{\emph{Multi-agent systems with virtual stigmergies.}
+Invited presentation at IMT School for Advanced Studies.
+Lucca, Italy, 3 July 2018.
+}
+
+\section*{Skills}
+\cvline{Technical skills}{%
+    My experience in programming spans more than a decade.
+    As of now my languages of choice are mainly F\# and Python, but I have
+    worked with a number of popular languages across the years
+    (e.g., C, C++, C\#, Erlang, Go, Java, Prolog).
+    I have some knowledge of control theory, computer architectures,
+    assembly languages, and hardware description languages (mainly VHDL).
+    I am also familiar with version control systems such as Git and
+    Subversion.
+    }
+\vspace*{\itemsep}    
+\cvline{Language skills}{
+Italian is my first language.
+I am fluent in English (CEFR level C1--C2)
+and have some knowledge of French (CEFR level A2--B1).
+}
+\cvline{Soft skills}{
+Having been the main contributor to all my publications so far,
+I have acquired good academic writing skills, as well as an ability
+to work in groups, meet deadlines, and present my ideas both to my team mates
+and to external audiences.
+}
 
 \section*{Publications}
 \nocite{*}
@@ -117,7 +174,49 @@ Invited as reviewer or sub-reviewer for the following conferences:
 
 Accessed on Scopus on \today.
 
-\cvline{Citations}{15}
+\cvline{Citations}{16}
 \cvline{\emph{h}-index}{3}  
+
+% \section*{Received research grants}
+
+% \cvlistitem{%
+%     ``Verification of Emerging Properties in Collective Adaptive Systems''.
+%     Short-term grant, December 2019 -- October 2020, IMT Lucca, Italy (see page~\pageref{grant:sysma}).}
+
+    % \clearpage
+
+% \section*{References}
+
+% For references, please contact: 
+
+% \vspace*{\itemsep}
+% \cvlistitem{%
+%     Rocco De Nicola,
+%     Professor of Computer Science,
+%     IMT School for Advanced Studies, Lucca, Italy.
+%     E-mail:~\href{mailto:rocco.denicola@imtlucca.it}{rocco.denicola@imtlucca.it}}
+% \cvlistitem{%
+%     Omar Inverso,
+%     Assistant Professor,
+%     Gran Sasso Science Institute, L'Aquila, Italy.
+%     E-mail:~\href{mailto:omar.inverso@gssi.it}{omar.inverso@gssi.it}}
+% \cvlistitem{%
+%     Frédéric Lang,
+%     Research Fellow,
+%     % Senior researcher,
+%     Inria and LIG, Montbonnot Saint-Martin, Grenoble, France.
+%     \mbox{E-mail:}~\href{mailto:frederic.lang@inria.fr}{frederic.lang@inria.fr}}
+
+% \cvlistitem{%
+%     Radu Mateescu,
+%     Research Director,
+%     % Senior researcher,
+%     Inria and LIG, Montbonnot Saint-Martin, Grenoble, France.
+%     \mbox{E-mail:}~\href{mailto:radu.mateescu@inria.fr}{radu.mateescu@inria.fr}}
+
+% \vspace*{\itemsep}
+% Rocco De Nicola and Omar Inverso supervised my PhD thesis from 2017 to 2020.
+% Frédéric Lang is a permanent member of the CONVECS research team
+% (led by Radu Mateescu), where I worked as a post-doctoral researcher from 2020 to 2022.
 
 \end{document}
