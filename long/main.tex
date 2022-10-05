@@ -3,6 +3,7 @@
 \usepackage{microtype}
 % \usepackage{times}
 % \usepackage[top=5em, bottom=10em, hscale=0.63]{geometry}
+\usepackage[a4paper, hscale=0.67]{geometry}
 % \recomputelengths
 
 \usepackage[bottom]{footmisc}
@@ -12,15 +13,19 @@
 \nopagenumbers{}
 
 % Publications %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[doi=false,bibstyle=publist,plnumbered=false,plauthorhandling=highlight,boldyear=false,nameorder=given-family,linktitledoi=true]{biblatex}
+\usepackage[doi=false,bibstyle=publist,plnumbered=false,plauthorhandling=highlight,boldyear=false,nameorder=given-family,linktitledoi=true,maxbibnames=99]{biblatex}
 \plauthorname[Luca]{Di Stefano}
 \renewcommand*{\plauthorhl}[1]{#1}
 \DeclareFieldInputHandler{extradate}{\def\NewValue{}}
 \addbibresource{../publications.bib}
 \defbibcheck{isjournal}{\ifentrytype{article}{}{\skipentry}}
 \defbibcheck{isconference}{\ifentrytype{inproceedings}{}{\skipentry}}
+\defbibcheck{ischapter}{\ifentrytype{inbook}{}{\skipentry}}
+\defbibcheck{isreport}{\ifentrytype{report}{}{\skipentry}}
 \defbibheading{journals}{\subsection*{Journal articles}}
 \defbibheading{conferences}{\subsection*{Peer-reviewed conference and workshop papers}}
+\defbibheading{chapters}{\subsection*{Book chapters}}
+\defbibheading{reports}{\subsection*{Technical reports}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{../commands.tex}
 
@@ -129,7 +134,7 @@ I have reviewed submissions to the following conferences and journals:
 
 \cvlistitem{\emph{Verifying collective adaptive systems by emulation.}
 Remote presentation to the Formal Methods unit of the Computer Science and
-Engineering department  at Chalmers Institute.
+Engineering department (University of Gothenburg and Chalmers).
 Gothenburg, Sweden, 10 March 2022.
 }
 
@@ -171,12 +176,14 @@ and to external audiences.
 \nocite{*}
 \printbibliography[heading=journals, check=isjournal]
 \printbibliography[heading=conferences, check=isconference]
+\printbibliography[heading=chapters, check=ischapter]
+\printbibliography[heading=reports, check=isreport]
 
 \subsection{Citation indices}
 
 Accessed on Scopus on \today.
 
-\cvline{Citations}{23}
+\cvline{Citations}{26}
 \cvline{\emph{h}-index}{3}  
 
 % \section*{Received research grants}
