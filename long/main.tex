@@ -13,9 +13,15 @@
 \nopagenumbers{}
 
 % Publications %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[doi=false,bibstyle=publist,plnumbered=false,plauthorhandling=highlight,boldyear=false,nameorder=given-family,linktitledoi=true,maxbibnames=99]{biblatex}
-\plauthorname[Luca]{Di Stefano}
-\renewcommand*{\plauthorhl}[1]{#1}
+%% Set base style for biblatex-publist (do not use)
+% \newcommand*\publistbasestyle{mla}
+\usepackage[%
+    doi=false,bibstyle=publist,plnumbered=false,plauthorhandling=highlight,%
+    boldyear=false,linktitledoi=true,maxbibnames=99,%
+    giveninits=true,nameorder=given-family
+]{biblatex}
+% \plauthorname[Luca]{Di Stefano}
+% \renewcommand*{\plauthorhl}[1]{#1}
 \DeclareFieldInputHandler{extradate}{\def\NewValue{}}
 \addbibresource{../publications.bib}
 \defbibcheck{isjournal}{\ifentrytype{article}{}{\skipentry}}
@@ -114,17 +120,34 @@ Static analysis.
 
 \subsection{Reviewing activity}
 
-I have reviewed submissions to the following conferences and journals:
+\cvline{Conferences}{%
+SEFM~2019,
+TASE~2019,
+%%%%%%%%%%%
+AAMAS~2021,
+FM~2021,
+ICSOFT~2021,
+ISoLA~2021,
+%%%%%%%%%%%%
+FORTE~2022,
+ISoLA~2022,
+%%%%%%%%%%%%
+TACAS~2023.
+}
+\cvline{Journals}{%
+Logical Methods in Computer Science,
+Science of Computer Programming.
+}
 
-\vspace*{\itemsep}
-\cvlistitem{International Conference on Autonomous Agents and Multiagent Systems (AAMAS)}
-\cvlistitem{International Symposium on Formal Methods (FM)}
-\cvlistitem{International Conference on Formal Techniques for Distributed Objects, Components, and Systems (FORTE)}
-\cvlistitem{International Symposium On Leveraging Applications of Formal Methods, Verification and Validation (ISoLA)}
-\cvlistitem{International Conference on Software Technologies (ICSOFT)}
-\cvlistitem{Science of Computer Programming, Elsevier}
-\cvlistitem{International Conference on Software Engineering and Formal Methods (SEFM)}
-\cvlistitem{Theoretical Aspects of Software Engineering Conference (TASE)}
+% \vspace*{\itemsep}
+% \cvlistitem{International Conference on Autonomous Agents and Multiagent Systems (AAMAS)}
+% \cvlistitem{International Symposium on Formal Methods (FM)}
+% \cvlistitem{International Conference on Formal Techniques for Distributed Objects, Components, and Systems (FORTE)}
+% \cvlistitem{International Symposium On Leveraging Applications of Formal Methods, Verification and Validation (ISoLA)}
+% \cvlistitem{International Conference on Software Technologies (ICSOFT)}
+% \cvlistitem{Science of Computer Programming, Elsevier}
+% \cvlistitem{International Conference on Software Engineering and Formal Methods (SEFM)}
+% \cvlistitem{Theoretical Aspects of Software Engineering Conference (TASE)}
 
 \subsection*{Participation to PhD schools}
 
@@ -183,7 +206,7 @@ and to external audiences.
 
 Accessed on Scopus on \today.
 
-\cvline{Citations}{26}
+\cvline{Citations}{31}
 \cvline{\emph{h}-index}{3}  
 
 % \section*{Received research grants}
