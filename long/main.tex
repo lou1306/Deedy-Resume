@@ -12,14 +12,29 @@
 \moderncvcolor{black}
 \nopagenumbers{}
 
+%% Comment this to remove references
+% \newcommand*{\REFERENCES}{}
+
 % Publications %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Set base style for biblatex-publist (do not use)
 % \newcommand*\publistbasestyle{mla}
+
+% Comment this to remove markers and other stuff related to highlighted publications
+% \newcommand{\HIGHLIGHT}{}
 \usepackage[%
-    doi=false,bibstyle=publist,plnumbered=false,plauthorhandling=highlight,%
-    boldyear=false,linktitledoi=true,maxbibnames=99,%
-    giveninits=true,nameorder=given-family
+    doi=false,bibstyle=publist,plnumbering=none,plauthorhandling=highlight,%
+    hlyear=false,linktitles=doi,maxbibnames=99,citestyle=authoryear,
+    giveninits=true,nameorder=given-family,uniquename=init
 ]{biblatex}
+\ifx\HIGHLIGHT\undefined\else%
+\renewbibmacro*{begentry}{%
+\ifkeyword{highlight}{\makebox[0pt][r]{$\star$\addspace}}{}}
+\fi
+% \DefineBibliographyStrings{english}{%
+%   toappear = {To appear},
+% }
+
+% \renewbibmacro*{begentry}{\ifkeyword{highlight}{\makebox[0pt][r]{$\star$\addspace}}{}}
 % \plauthorname[Luca]{Di Stefano}
 % \renewcommand*{\plauthorhl}[1]{#1}
 \DeclareFieldInputHandler{extradate}{\def\NewValue{}}
@@ -27,11 +42,13 @@
 \defbibcheck{isjournal}{\ifentrytype{article}{}{\skipentry}}
 \defbibcheck{isconference}{\ifentrytype{inproceedings}{}{\skipentry}}
 \defbibcheck{ischapter}{\ifentrytype{inbook}{}{\skipentry}}
-\defbibcheck{isreport}{\ifentrytype{report}{}{\skipentry}}
+\defbibcheck{isreport}{\ifentrytype{report}{}{\ifkeyword{preprint}{}{\skipentry}}}
+\defbibcheck{ismastersthesis}{\ifkeyword{mastersthesis}{}{\skipentry}}
 \defbibheading{journals}{\subsection*{Journal articles}}
 \defbibheading{conferences}{\subsection*{Peer-reviewed conference and workshop papers}}
 \defbibheading{chapters}{\subsection*{Book chapters}}
-\defbibheading{reports}{\subsection*{Technical reports}}
+\defbibheading{reports}{\subsection*{Preprints and technical reports}}
+\defbibheading{masters}{\subsection*{Supervised Master's students}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{../commands.tex}
 
@@ -56,6 +73,7 @@
 \newcommand*{\ifShort}[1]{}
 \newcommand*{\ifLong}[1]{#1}
 
+
 \newenvironment{tightemize}{\begin{itemize}\setlength\itemsep{0.2em}}{\end{itemize}}
 
 \begin{document}
@@ -72,9 +90,11 @@
 
 \section*{Personal information}
 \begin{description}
-    \item[E-mail:] \href{mailto:lucad@chalmers.se}{lucad@chalmers.se} 
-    \item[Work address:] Rännvägen 6B, 41258 Göteborg, Sweden
-    \item[Web page:] \url{https://www.cse.chalmers.se/~lucad/} 
+    \item[E-mail:] \href{mailto:luca.di.stefano@tuwien.ac.at}{luca.di.stefano@tuwien.ac.at} 
+    \item[Work address:] Treitlstraße 3, 1040, Vienna, Austria
+    \item[Web page:] \url{https://www.lucadistefano.eu}
+    \item[ORCID:] \url{https://orcid.org/0000-0003-1922-3151}
+    \item[Scopus ID:] \href{https://www.scopus.com/authid/detail.uri?authorId=57205057932}{57205057932}
 \end{description}
 
 \section{Research interests}
@@ -98,6 +118,7 @@ Stigmergic interaction,
 Structural operational semantics,
 Temporal logics.
 }
+
 \cvline{Analysis}{%
 Bounded model checking,
 Explicit-state and symbolic model checking,
@@ -108,13 +129,20 @@ Static analysis.
 \section*{Education}
 \input{data/edu.tex}
 
-\clearpage
 
-\section*{Positions held}
+\section*{Academic Career}
 \input{data/jobs.tex}
 
 \section*{Teaching}
 \input{data/teaching.tex}
+
+\printbibliography[heading=masters, check=ismastersthesis]
+
+% \subsection*{Supervised students}
+% \cvline{Master students}{%
+% Love Lyckaro, Chalmers, 2023.
+% \emph{Evaluating in-memory caching strategies for distributed Web services}.%
+% }
 
 \section*{Other academic activities}
 
@@ -132,12 +160,31 @@ ISoLA~2021,
 FORTE~2022,
 ISoLA~2022,
 %%%%%%%%%%%%
-TACAS~2023.
+CSL~2023,
+iFM~2023,
+TACAS~2023,
+%%%%%%%%%%%%
+EMSOFT~2024,
+FMICS~2024,
+iFM~2024,
+ISoLA~2024.
 }
+
+\cvline{Artifact evaluations}{%
+COORDINATION~2023.
+}
+
 \cvline{Journals}{%
-Logical Methods in Computer Science,
-Science of Computer Programming.
+Logical Methods in Computer Science (2023),
+Science of Computer Programming (2022, 2024),
+Software Tools for Technology Transfer (2023, 2024).
 }
+
+\subsection*{Program Committees}
+FMICS~2024, NSAD~2024, ASQAP~2025.
+
+\subsection*{Workshop Chair}
+FTfJP~2024.
 
 % \vspace*{\itemsep}
 % \cvlistitem{International Conference on Autonomous Agents and Multiagent Systems (AAMAS)}
@@ -150,10 +197,15 @@ Science of Computer Programming.
 % \cvlistitem{Theoretical Aspects of Software Engineering Conference (TASE)}
 
 \subsection*{Participation to PhD schools}
-
 \input{data/schools.tex}
 
+
 \subsection*{Invited presentations}
+
+\cvlistitem{\emph{Compositional Verification of Stigmergic Collective Systems.}
+Invited presentation to the CONVECS research team (Inria/LIG).
+Grenoble, France, 16 May 2023.
+}
 
 \cvlistitem{\emph{Verifying collective adaptive systems by emulation.}
 Remote presentation to the Formal Methods unit of the Computer Science and
@@ -177,37 +229,54 @@ Lucca, Italy, 3 July 2018.
     As of now my languages of choice are mainly F\# and Python, but I have
     worked with a number of popular languages across the years
     (e.g., C, C++, C\#, Erlang, Go, Java, Prolog).
+    I am familiar with software verification tools (CBMC, ESBMC, Infer),
+    model checking software (CADP, NuXmv, SPIN),
+    and SAT/SMT solvers (Glucose, MathSat, Minisat, Z3).
     I have some knowledge of control theory, computer architectures,
     assembly languages, and hardware description languages (mainly VHDL).
     I am also familiar with version control systems such as Git and
-    Subversion.
-    }
+    Subversion.}
 \vspace*{\itemsep}    
 \cvline{Language skills}{
 Italian is my first language.
 I am fluent in English (CEFR level C1--C2)
 and have some knowledge of French (CEFR level A2--B1).
+I have basic Swedish skills (CEFR level A1).
 }
-\cvline{Soft skills}{
-Having been the main contributor to all my publications so far,
-I have acquired good academic writing skills, as well as an ability
-to work in groups, meet deadlines, and present my ideas both to my team mates
-and to external audiences.
-}
+% \cvline{Soft skills}{
+% Having been the main contributor to multiple peer-reviewed scientific articles,
+% I have acquired good academic writing skills, as well as an ability
+% to work in groups, meet deadlines, and present my ideas both to my teammates
+% and to external audiences.
+% }
 
 \section*{Publications}
+\ifx\HIGHLIGHT\undefined\else%
+Most relevant publications are highlighted by a $\star$.
+\fi
+
 \nocite{*}
 \printbibliography[heading=journals, check=isjournal]
 \printbibliography[heading=conferences, check=isconference]
 \printbibliography[heading=chapters, check=ischapter]
 \printbibliography[heading=reports, check=isreport]
 
-\subsection{Citation indices}
+\ifx\HIGHLIGHT\undefined\else%
+\subsection*{Highlighted publications}
+I was the main contributor to all the highlighted publications, except
+(\cite{DBLP:journals/fmsd/StefanoL24}), where I mainly worked on the experimental
+evaluation and on building a replication package to reproduce the results
+presented in the article.
+\fi
 
-Accessed on Scopus on \today.
+\subsection{Citation metrics}
 
-\cvline{Citations}{31}
-\cvline{\emph{h}-index}{3}  
+As reported by Scopus on \today.
+
+\cvline{}{} % For spacing
+\cvline{Citations}{68}
+
+\cvline{\emph{h}-index}{5}
 
 % \section*{Received research grants}
 
@@ -217,21 +286,22 @@ Accessed on Scopus on \today.
 
     % \clearpage
 
-% \section*{References}
+\ifx\REFERENCES\undefined\else%
+\section*{References}
 
-% For references, please contact: 
+For references, please contact: 
 
-% \vspace*{\itemsep}
-% \cvlistitem{%
-%     Rocco De Nicola,
-%     Professor of Computer Science,
-%     IMT School for Advanced Studies, Lucca, Italy.
-%     E-mail:~\href{mailto:rocco.denicola@imtlucca.it}{rocco.denicola@imtlucca.it}}
-% \cvlistitem{%
-%     Omar Inverso,
-%     Assistant Professor,
-%     Gran Sasso Science Institute, L'Aquila, Italy.
-%     E-mail:~\href{mailto:omar.inverso@gssi.it}{omar.inverso@gssi.it}}
+\vspace*{\itemsep}
+\cvlistitem{%
+    Rocco De Nicola,
+    Professor of Computer Science,
+    IMT School for Advanced Studies, Lucca, Italy.
+    E-mail:~\href{mailto:rocco.denicola@imtlucca.it}{rocco.denicola@imtlucca.it}}
+\cvlistitem{%
+    Omar Inverso,
+    Assistant Professor,
+    Gran Sasso Science Institute, L'Aquila, Italy.
+    E-mail:~\href{mailto:omar.inverso@gssi.it}{omar.inverso@gssi.it}}
 % \cvlistitem{%
 %     Frédéric Lang,
 %     Research Fellow,
@@ -239,16 +309,28 @@ Accessed on Scopus on \today.
 %     Inria and LIG, Montbonnot Saint-Martin, Grenoble, France.
 %     \mbox{E-mail:}~\href{mailto:frederic.lang@inria.fr}{frederic.lang@inria.fr}}
 
-% \cvlistitem{%
-%     Radu Mateescu,
-%     Research Director,
-%     % Senior researcher,
-%     Inria and LIG, Montbonnot Saint-Martin, Grenoble, France.
-%     \mbox{E-mail:}~\href{mailto:radu.mateescu@inria.fr}{radu.mateescu@inria.fr}}
+\cvlistitem{%
+    Radu Mateescu,
+    Research Director,
+    % Senior researcher,
+    Inria and LIG, Montbonnot Saint-Martin, Grenoble, France.
+    \mbox{E-mail:}~\href{mailto:radu.mateescu@inria.fr}{radu.mateescu@inria.fr}}
 
-% \vspace*{\itemsep}
-% Rocco De Nicola and Omar Inverso supervised my PhD thesis from 2017 to 2020.
+\cvlistitem{%
+    Nir Piterman,
+    Full Professor,
+    % Senior researcher,
+    University of Gothenburg, Sweden.
+    \mbox{E-mail:}~\href{mailto:piterman@chalmers.se}{piterman@chalmers.se}}
+
+\vspace*{\itemsep}
+Rocco De Nicola and Omar Inverso supervised my PhD thesis from 2017 to 2020.
 % Frédéric Lang is a permanent member of the CONVECS research team
-% (led by Radu Mateescu), where I worked as a post-doctoral researcher from 2020 to 2022.
+% (led by Radu Mateescu), where I worked as a post-doctoral researcher from 2020
+% to 2022.
+Radu Mateescu leads the CONVECS research team, where I worked as a post-doctoral researcher from 2020
+to 2022.
+Nir Piterman is the leader of my current research team in Gothenburg.
+\fi
 
 \end{document}
